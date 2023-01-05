@@ -7,7 +7,7 @@ from raffaelo.providers.http.provider import HTTPProvider
 class TestERC20TokenContract:
     mock = '0x0000000000000000000000000000000000000000'
     address = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
-    provider = HTTPProvider(uri='')
+    provider = HTTPProvider(uri='https://rpc.ankr.com/eth')
 
     @classmethod
     def setup_class(cls):

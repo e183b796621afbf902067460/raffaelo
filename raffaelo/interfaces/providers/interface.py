@@ -3,6 +3,7 @@ from abc import ABC
 from urllib import parse
 
 from web3.providers.rpc import HTTPProvider
+from web3.providers.base import BaseProvider
 from web3.exceptions import ValidationError, CannotHandleRequest
 
 
@@ -14,24 +15,13 @@ class iCBP(ABC):
 
         self._provider = self.provider = None
 
-    def __call__(self, *args, **kwargs):
-        return self.provider
-
     @property
-    def provider(self):
+    def provider(self) -> BaseProvider:
         return self._provider
 
     @provider.setter
-    def provider(self, *args, **kwargs):
-        self._provider = self.builder.build(key='protocol', value=self.protocol).build(key='uri', value=self.uri).connect().construct()
-
-    @property
-    def protocol(self):
-        return self._protocol
-
-    @property
-    def uri(self):
-        return self._uri
+    def provider(self, *args, **kwargs) -> None:
+        self._provider = self.builder.build(key='protocol', value=self._protocol).build(key='uri', value=self._uri).connect().construct()
 
     class Builder:
         def __init__(self) -> None:
@@ -71,7 +61,7 @@ class iCBP(ABC):
             return self
 
         @final
-        def connect(self):
+        def connect(self) -> "iCBP.Builder":
             protocol = self._options.get('protocol')
             if protocol in ('http', 'https'):
                 http = HTTPProvider(endpoint_uri=self._options.get('uri'))
@@ -84,7 +74,7 @@ class iCBP(ABC):
             return self
 
         @final
-        def construct(self):
+        def construct(self) -> BaseProvider:
             return self._options['provider']
 
     @property
