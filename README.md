@@ -79,6 +79,6 @@ uniswap = UniswapV2PairContract(address=address, provider=provider)
 ```
 And finally to call needed methods just do it:
 ```python
-t0Address = uniswap.token0()
-t1Address = uniswap.token1()
+t0_address = uniswap.token0()
+t1_address = uniswap.token1()
 ```
