@@ -75,7 +75,7 @@ from raffaelo.providers.http.provider import HTTPProvider
 address = '0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc'
 provider = HTTPProvider(uri='https://rpc.ankr.com/eth')
 
-uniswap = UniswapV2PairContract(address='', provider=provider)
+uniswap = UniswapV2PairContract(address=address, provider=provider)
 ```
 And finally to call needed methods just do it:
 ```python
