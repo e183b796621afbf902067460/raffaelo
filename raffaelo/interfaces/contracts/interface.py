@@ -25,6 +25,10 @@ class iCBC(ABC):
     def contract(self, *args, **kwargs) -> None:
         self._contract = self.builder.build(key='address', value=self._address).build(key='provider', value=self._provider).connect().construct()
 
+    @property
+    def provider(self):
+        return self._provider
+
     class Builder:
         def __init__(self, abi: str) -> None:
             self._options: Dict[str, Any] = dict()
