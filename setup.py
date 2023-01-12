@@ -9,7 +9,7 @@ with open('requirements.txt') as requirements:
 
 setup(
     name="raffaelo",
-    version="1.0",
+    version="0.0.0",
     author="e183b796621afbf902067460",
     author_email="606d18446a06fe9738fd@gmail.com",
     url="https://github.com/e183b796621afbf902067460/raffaelo",
