@@ -29,6 +29,10 @@ class iCBC(ABC):
     def provider(self):
         return self._provider
 
+    @property
+    def node(self):
+        return self.provider.provider
+
     class Builder:
         def __init__(self, abi: str) -> None:
             self._options: Dict[str, Any] = dict()
