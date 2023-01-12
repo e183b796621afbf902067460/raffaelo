@@ -2,6 +2,11 @@
 
 It's a core framework for interacting with smart contracts. The purpose of the framework is to implement the logic of the certain smart contract. All contracts inherit the [`iCBC`](https://github.com/e183b796621afbf902067460/raffaelo/blob/master/raffaelo/interfaces/contracts/interface.py) logic.
 
+# Installation
+```
+pip install git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo
+```
+
 # Usage
 Let's build our first contract:
 ```python
