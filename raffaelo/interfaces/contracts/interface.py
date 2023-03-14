@@ -57,11 +57,13 @@ class iCBC(ABC):
 
             def validate(k: str, v: Any) -> None:
                 if k == 'address':
-                    if not Web3.isAddress(value=v):
-                        raise ValidationError("Invalid address")
+                    ...
+#                     if not Web3.isAddress(value=v):
+#                         raise ValidationError("Invalid address")
                 elif k == 'provider':
-                    if not v.provider.isConnected():
-                        raise CannotHandleRequest("Provider is down")
+                    ...
+#                     if not v.provider.isConnected():
+#                         raise CannotHandleRequest("Provider is down")
 
             if isinstance(params, dict):
                 for k, v in params.items():
