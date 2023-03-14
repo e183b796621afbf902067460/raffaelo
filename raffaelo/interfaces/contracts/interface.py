@@ -76,8 +76,8 @@ class iCBC(ABC):
 
         @final
         def connect(self) -> "iCBC.Builder":
-            if self._options.get('address'):
-                self._options['address'] = Web3.toChecksumAddress(value=self._options.get('address'))
+#             if self._options.get('address'):
+#                 self._options['address'] = Web3.toChecksumAddress(value=self._options.get('address'))
             return self
 
         @final
