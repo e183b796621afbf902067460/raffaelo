@@ -2,7 +2,7 @@ from typing import Dict, Any, Optional, overload, final
 from abc import ABC
 from urllib import parse
 
-from web3.providers.rpc import HTTPProvider
+from web3.providers.rpc import HTTPProvider as W3HTTPProvider
 from web3.providers.base import BaseProvider
 from web3.exceptions import ValidationError, CannotHandleRequest
 
@@ -64,7 +64,7 @@ class iCBP(ABC):
         def connect(self) -> "iCBP.Builder":
             protocol = self._options.get('protocol')
             if protocol in ('http', 'https'):
-                http = HTTPProvider(endpoint_uri=self._options.get('uri'))
+                http = W3HTTPProvider(endpoint_uri=self._options.get('uri'))
                 if http.isConnected():
                     self._options['provider'] = http
                 else:
