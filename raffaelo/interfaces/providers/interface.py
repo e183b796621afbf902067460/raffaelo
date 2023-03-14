@@ -64,11 +64,7 @@ class iCBP(ABC):
         def connect(self) -> "iCBP.Builder":
             protocol = self._options.get('protocol')
             if protocol in ('http', 'https'):
-                http = W3HTTPProvider(endpoint_uri=self._options.get('uri'))
-                if http.isConnected():
-                    self._options['provider'] = http
-                else:
-                    raise CannotHandleRequest("HTTP provider is down")
+                self._options['provider'] = W3HTTPProvider(endpoint_uri=self._options.get('uri'))
             if protocol in ('wss', 'websocket'):
                 ...
             return self
