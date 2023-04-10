@@ -57,10 +57,10 @@ class iCBC(ABC):
 
             def validate(k: str, v: Any) -> None:
                 if k == 'address':
-                    if not Web3.isAddress(value=v):
+                    if not Web3.is_address(value=v):
                         raise ValidationError("Invalid address")
                 elif k == 'provider':
-                    if not v.provider.isConnected():
+                    if not v.provider.is_connected():
                         raise CannotHandleRequest("Provider is down")
 
             if isinstance(params, dict):
@@ -75,7 +75,7 @@ class iCBC(ABC):
         @final
         def connect(self) -> "iCBC.Builder":
             if self._options.get('address'):
-                self._options['address'] = Web3.toChecksumAddress(value=self._options.get('address'))
+                self._options['address'] = Web3.to_checksum_address(value=self._options.get('address'))
             return self
 
         @final
