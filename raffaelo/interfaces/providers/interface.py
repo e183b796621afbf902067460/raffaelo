@@ -3,6 +3,7 @@ from abc import ABC
 from urllib import parse
 
 from web3.providers.rpc import HTTPProvider as W3HTTPProvider
+from web3.providers.websocket import WebsocketProvider
 from web3.providers.base import BaseProvider
 from web3.exceptions import ValidationError, CannotHandleRequest
 
@@ -66,7 +67,7 @@ class iCBP(ABC):
             if protocol in ('http', 'https'):
                 self._options['provider'] = W3HTTPProvider(endpoint_uri=self._options.get('uri'))
             if protocol in ('wss', 'websocket'):
-                ...
+                self._options['provider'] = WebsocketProvider(endpoint_uri=self._options.get('uri'))
             return self
 
         @final
