@@ -13,7 +13,9 @@ setup(
     author="e183b796621afbf902067460",
     author_email="606d18446a06fe9738fd@gmail.com",
     url="https://github.com/e183b796621afbf902067460/raffaelo/tree/master/_modules/raffaelo-uniswap-v3",
-    packages=find_packages(),
+    packages=find_packages(
+        exclude=['raffaelo_uniswap_v3_tests*']
+    ),
     long_description=long_description,
     install_requires=required
 )
