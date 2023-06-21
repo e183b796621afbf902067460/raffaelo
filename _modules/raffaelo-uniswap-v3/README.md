@@ -4,5 +4,5 @@ It's a core framework for interacting with UniSwapV3 smart contracts. The purpos
 
 # Installation
 ```
-pip install git+https://github.com/e183b796621afbf902067460/raffaelo/_modules/raffaelo-uniswap-v3.git#egg=raffaelo_uniswap_v3
+pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_uniswap_v3&subdirectory=_modules/raffaelo-uniswap-v3/"
 ```
