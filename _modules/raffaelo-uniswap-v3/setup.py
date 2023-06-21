@@ -15,5 +15,5 @@ setup(
     url="https://github.com/e183b796621afbf902067460/raffaelo/tree/master/_modules/raffaelo-uniswap-v3",
     packages=find_packages(),
     long_description=long_description,
-    install_requires=required,
+    install_requires=required
 )
