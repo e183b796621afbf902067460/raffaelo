@@ -1,1 +1,1 @@
--e git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo
+raffaelo @ git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo
