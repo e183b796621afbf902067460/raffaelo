@@ -32,17 +32,6 @@ class EthereumEVM(object):
     def get_block_no_by_time(self, ts: int) -> str:
         return self.__r(q=f'module=block&action=getblocknobytime&timestamp={ts}&closest=before')
 
-    @staticmethod
-    def __serialize_logs_to_web3(logs: list) -> list:
-        attrs = list()
-        for log in logs:
-            log['topics'] = [HexBytes(topic) for topic in log['topics']]
-            log['data'] = HexBytes(log['data'])
-            log['blockHash'] = HexBytes(log['blockHash'])
-            log['transactionHash'] = HexBytes(log['transactionHash'])
-            attrs.append(AttributeDict(log))
-        return attrs
-
     @final
     def get_logs(
             self,
@@ -52,6 +41,17 @@ class EthereumEVM(object):
             offset: int = 1000,
             is_to_web3: bool = True
     ) -> list:
+
+        def serialize_logs_to_web3(logs_: list) -> list:
+            attrs = list()
+            for log in logs_:
+                log['topics'] = [HexBytes(topic) for topic in log['topics']]
+                log['data'] = HexBytes(log['data'])
+                log['blockHash'] = HexBytes(log['blockHash'])
+                log['transactionHash'] = HexBytes(log['transactionHash'])
+                attrs.append(AttributeDict(log))
+            return attrs
+
         logs, timestamp = list(), end_time.timestamp() - start_time.timestamp()
 
         parts = int(((end_time - start_time).days * timestamp * 24 + (end_time - start_time).seconds) / timestamp)
@@ -68,4 +68,4 @@ class EthereumEVM(object):
                 page += 1
                 if len(page_logs) < offset:
                     break
-        return logs if not is_to_web3 else self.__serialize_logs_to_web3(logs=logs)
+        return logs if not is_to_web3 else serialize_logs_to_web3(logs_=logs)
