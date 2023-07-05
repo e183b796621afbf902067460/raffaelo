@@ -10,7 +10,6 @@ class ERC20TokenContract(iCBC):
     def name(self) -> str:
         return self.contract.functions.name().call()
 
-    @lru_cache
     def totalSupply(self) -> int:
         return self.contract.functions.totalSupply().call()
 
@@ -18,7 +17,6 @@ class ERC20TokenContract(iCBC):
     def decimals(self) -> int:
         return self.contract.functions.decimals().call()
 
-    @lru_cache
     def balanceOf(self, address: str) -> int:
         return self.contract.functions.balanceOf(address).call()
 
@@ -26,6 +24,5 @@ class ERC20TokenContract(iCBC):
     def symbol(self) -> str:
         return self.contract.functions.symbol().call()
 
-    @lru_cache
     def allowance(self, owner: str, spender: str) -> int:
         return self.contract.functions.allowance(owner, spender).call()
