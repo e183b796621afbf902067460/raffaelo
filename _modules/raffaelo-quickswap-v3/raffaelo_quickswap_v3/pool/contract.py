@@ -21,47 +21,36 @@ class QuickSwapV3AlgebraPoolContract(iCBC):
     def factory(self) -> str:
         return self.contract.functions.factory().call()
 
-    @lru_cache
     def getInnerCumulatives(self, bottomTick: int, topTick: int) -> list:
         return self.contract.functions.getInnerCumulatives(bottomTick, topTick).call()
 
-    @lru_cache
     def getTimepoints(self, secondsAgos: List[int]) -> list:
         return self.contract.functions.getTimepoints(secondsAgos).call()
 
-    @lru_cache
     def globalState(self) -> list:
         return self.contract.functions.globalState().call()
 
-    @lru_cache
     def liquidity(self) -> int:
         return self.contract.functions.liquidity().call()
 
-    @lru_cache
     def liquidityCooldown(self) -> int:
         return self.contract.functions.liquidityCooldown().call()
 
-    @lru_cache
     def maxLiquidityPerTick(self) -> int:
         return self.contract.functions.maxLiquidityPerTick().call()
 
-    @lru_cache
     def positions(self, i: bytes) -> list:
         return self.contract.functions.positions(i).call()
 
-    @lru_cache
     def tickSpacing(self) -> int:
         return self.contract.functions.tickSpacing().call()
 
-    @lru_cache
     def tickTable(self, i: int) -> int:
         return self.contract.functions.tickTable(i).call()
 
-    @lru_cache
     def ticks(self, i: int) -> list:
         return self.contract.functions.ticks(i).call()
 
-    @lru_cache
     def timepoints(self, i: int) -> list:
         return self.contract.functions.timepoints(i).call()
 
@@ -73,10 +62,8 @@ class QuickSwapV3AlgebraPoolContract(iCBC):
     def token1(self) -> ERC20TokenContract:
         return ERC20TokenContract(self.contract.functions.token1().call(), self.node)
 
-    @lru_cache
     def totalFeeGrowth0Token(self) -> int:
         return self.contract.functions.totalFeeGrowth0Token().call()
 
-    @lru_cache
     def totalFeeGrowth1Token(self) -> int:
         return self.contract.functions.totalFeeGrowth1Token().call()
