@@ -17,55 +17,42 @@ class UniSwapV3PoolContract(iCBC):
     def fee(self) -> int:
         return self.contract.functions.fee().call()
 
-    @lru_cache
     def feeGrowthGlobal0X128(self) -> int:
         return self.contract.functions.feeGrowthGlobal0X128().call()
 
-    @lru_cache
     def feeGrowthGlobal1X128(self) -> int:
         return self.contract.functions.feeGrowthGlobal1X128().call()
 
-    @lru_cache
     def liquidity(self) -> int:
         return self.contract.functions.liquidity().call()
 
-    @lru_cache
     def maxLiquidityPerTick(self) -> int:
         return self.contract.functions.maxLiquidityPerTick().call()
 
-    @lru_cache
     def observations(self, i: int) -> list:
         return self.contract.functions.observations(i).call()
 
-    @lru_cache
     def observe(self, secondsAgos: List[int]) -> list:
         return self.contract.functions.observe(secondsAgos).call()
 
-    @lru_cache
     def positions(self, i: bytes) -> list:
         return self.contract.functions.positions(i).call()
 
-    @lru_cache
     def protocolFees(self) -> list:
         return self.contract.functions.protocolFees().call()
 
-    @lru_cache
     def slot0(self) -> list:
         return self.contract.functions.slot0().call()
 
-    @lru_cache
     def snapshotCumulativesInside(self, tickLower: int, tickUpper: int) -> list:
         return self.contract.functions.snapshotCumulativesInside(tickLower, tickUpper).call()
 
-    @lru_cache
     def tickBitmap(self, i: int) -> int:
         return self.contract.functions.tickBitmap(i).call()
 
-    @lru_cache
     def tickSpacing(self) -> int:
         return self.contract.functions.tickSpacing().call()
 
-    @lru_cache
     def ticks(self, i: int) -> list:
         return self.contract.functions.ticks(i).call()
 
