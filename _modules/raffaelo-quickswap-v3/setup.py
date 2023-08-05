@@ -9,7 +9,7 @@ with open('requirements.txt') as requirements:
 
 setup(
     name="raffaelo-quickswap-v3",
-    version="0.0.1",
+    version="0.0.2",
     author="e183b796621afbf902067460",
     author_email="606d18446a06fe9738fd@gmail.com",
     url="https://github.com/e183b796621afbf902067460/raffaelo/tree/master/_modules/raffaelo-quickswap-v3",
