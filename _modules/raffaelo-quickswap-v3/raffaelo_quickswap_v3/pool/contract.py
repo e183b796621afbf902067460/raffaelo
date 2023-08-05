@@ -56,11 +56,11 @@ class QuickSwapV3AlgebraPoolContract(iCBC):
 
     @lru_cache
     def token0(self) -> ERC20TokenContract:
-        return ERC20TokenContract(self.contract.functions.token0().call(), self.node)
+        return ERC20TokenContract(self.contract.functions.token0().call(), self.provider)
 
     @lru_cache
     def token1(self) -> ERC20TokenContract:
-        return ERC20TokenContract(self.contract.functions.token1().call(), self.node)
+        return ERC20TokenContract(self.contract.functions.token1().call(), self.provider)
 
     def totalFeeGrowth0Token(self) -> int:
         return self.contract.functions.totalFeeGrowth0Token().call()
