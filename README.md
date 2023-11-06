@@ -1,6 +1,6 @@
 # raffaelo
 
-> Semyon, P. (2023). Web3: writing a small framework for interacting with smart contracts on Python. [Habr](https://habr.com/ru/articles/710084/).
+> Semyon, P. (2023). [Web3: writing a small framework for interacting with smart contracts on Python](https://habr.com/ru/articles/710084/).
 
 
 
