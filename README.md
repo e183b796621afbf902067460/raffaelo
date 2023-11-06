@@ -1,5 +1,9 @@
 # raffaelo
 
+> Semyon, P. (2023). Web3: writing a small framework for interacting with smart contracts on Python. [Habr](https://habr.com/ru/articles/710084/).
+
+
+
 It's a core framework for interacting with smart contracts. The purpose of the framework is to implement the logic of the certain smart contract. All contracts inherit the [`iCBC`](https://github.com/e183b796621afbf902067460/raffaelo/blob/master/raffaelo/interfaces/contracts/interface.py) logic.
 
 # Installation
