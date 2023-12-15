@@ -9,7 +9,23 @@ from web3.providers.websocket import WebsocketProvider
 
 
 class iCBP(ABC):
+    """iCBP is an abstract base class representing an interface for creating blockchain providers.
+
+    Attributes
+    ----------
+        _uri (str): The URI of the blockchain provider.
+        _protocol (str): The protocol used for communication with the blockchain provider.
+        _provider (BaseProvider): The blockchain provider instance.
+    """
+
     def __init__(self, protocol: str, uri: str) -> None:
+        """Initializes the iCBP instance with the provided protocol and URI.
+
+        Args:
+        ----
+            protocol (str): The protocol used for communication with the blockchain provider.
+            uri (str): The URI of the blockchain provider.
+        """
         self._uri = uri
         self._protocol = protocol
 
@@ -17,10 +33,23 @@ class iCBP(ABC):
 
     @property
     def provider(self) -> BaseProvider:
+        """Gets the blockchain provider instance.
+
+        Returns
+        -------
+            BaseProvider: The blockchain provider instance.
+        """
         return self._provider
 
     @provider.setter
     def provider(self, *args, **kwargs) -> None:
+        """Sets the blockchain provider instance.
+
+        Args:
+        ----
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         self._provider = (
             self.builder.build(key="protocol", value=self._protocol)
             .build(key="uri", value=self._uri)
@@ -29,7 +58,11 @@ class iCBP(ABC):
         )
 
     class Builder:
+        """Builder is a nested class within iCBP for building iCBP instances with validated parameters."""
+
         def __init__(self) -> None:
+            """Initializes the Builder instance."""
+
             self._options: Dict[str, Any] = dict()
 
         @overload
@@ -47,6 +80,19 @@ class iCBP(ABC):
             value: Optional[str] = None,
             params: Optional[Dict[str, Any]] = None,
         ) -> "iCBP.Builder":
+            """Builds the iCBP instance with validated parameters.
+
+            Args:
+            ----
+                key (Optional[str]): The key of the parameter.
+                value (Optional[str]): The value of the parameter.
+                params (Optional[Dict[str, Any]]): Additional parameters as a dictionary.
+
+            Returns:
+            -------
+                iCBP.Builder: The Builder instance.
+            """
+
             def validate(k: str, v: str) -> None:
                 if k == "protocol":
                     if v.lower() not in ("http", "https", "websocket", "wss"):
@@ -66,6 +112,12 @@ class iCBP(ABC):
 
         @final
         def connect(self) -> "iCBP.Builder":
+            """Connects the blockchain provider instance by creating an appropriate provider based on the protocol.
+
+            Returns
+            -------
+                iCBP.Builder: The Builder instance.
+            """
             protocol = self._options.get("protocol")
             if protocol in ("http", "https"):
                 self._options["provider"] = W3HTTPProvider(
@@ -79,8 +131,20 @@ class iCBP(ABC):
 
         @final
         def construct(self) -> BaseProvider:
+            """Constructs the iCBP instance.
+
+            Returns
+            -------
+                BaseProvider: The blockchain provider instance.
+            """
             return self._options["provider"]
 
     @property
     def builder(self) -> Builder:
+        """Gets the Builder instance for building blockchain provider instances.
+
+        Returns
+        -------
+            iCBP.Builder: The Builder instance.
+        """
         return self.Builder()
