@@ -1,10 +1,9 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-
-with open('README.md', 'r') as readme:
+with open("README.md", "r") as readme:
     long_description = readme.read()
 
-with open('requirements.txt') as requirements:
+with open("requirements.txt") as requirements:
     required = requirements.read().splitlines()
 
 setup(
@@ -14,8 +13,8 @@ setup(
     author_email="606d18446a06fe9738fd@gmail.com",
     url="https://github.com/e183b796621afbf902067460/raffaelo/tree/master/_modules/raffaelo-quickswap-v3",
     packages=find_packages(
-        exclude=['raffaelo_quickswap_v3_tests*']
+        exclude=["raffaelo_quickswap_v3_tests*"],
     ),
     long_description=long_description,
-    install_requires=required
+    install_requires=required,
 )
