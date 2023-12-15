@@ -1,11 +1,10 @@
-from setuptools import setup, find_packages
+from pathlib import Path
 
+from setuptools import find_packages, setup
 
-with open('README.md', 'r') as readme:
-    long_description = readme.read()
+long_description = Path("README.md").read_text()
+required = Path("requirements.txt").read_text().splitlines()
 
-with open('requirements.txt') as requirements:
-    required = requirements.read().splitlines()
 
 setup(
     name="raffaelo",
