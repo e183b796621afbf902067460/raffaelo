@@ -10,7 +10,9 @@ select = ["A", "B", "C4", "D", "E", "F", "FURB", "ISC", "Q", "T20", "UP"]
 ignore = [
     "A003", # Class attribute {name} is shadowing a Python builtin
     "B019", # Use of `functools.lru_cache` or `functools.cache` on methods can lead to memory leaks
+    "B024", # Abstract base class, but it has no abstract methods
     "B026", # Star-arg unpacking after a keyword argument is strongly discouraged
+    "C408", # Unnecessary `dict` call (rewrite as a literal)
     "C416", # Unnecessary `dict` comprehension (rewrite using `dict()`)
     "D100", # Missing docstring in public module
     "D104", # Missing docstring in public package
