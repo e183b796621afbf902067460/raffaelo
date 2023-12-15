@@ -1,0 +1,45 @@
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+preview = true
+
+[tool.ruff.lint]
+select = ["A", "B", "C4", "D", "E", "F", "FURB", "ISC", "Q", "T20", "UP"]
+ignore = [
+    "A003", # Class attribute {name} is shadowing a Python builtin
+    "B019", # Use of `functools.lru_cache` or `functools.cache` on methods can lead to memory leaks
+    "B026", # Star-arg unpacking after a keyword argument is strongly discouraged
+    "C416", # Unnecessary `dict` comprehension (rewrite using `dict()`)
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D105", # Missing docstring in magic method
+    "D106", # Missing docstring in public nested class
+    "D107", # Missing docstring in __init__
+    "D202", # No blank lines allowed after function docstring
+    "D203", # one-blank-line-before-class
+    "D205", # 1 blank line required between summary line and description
+    "D213", # Multi-line docstring summary should start at the second line
+    "D214", # Section is over-indented
+    "D215", # Section underline is over-indented
+    "D400", # First line should end with a period
+    "D401", # First line of docstring should be in imperative mood
+    "D415", # First line should end with a period, question mark, or exclamation
+    "D416", # Section name should end with a colon
+    "D417", # Missing argument descriptions in the docstring
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+include_trailing_comma = true
