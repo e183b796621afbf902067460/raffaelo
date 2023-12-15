@@ -1,5 +1,9 @@
 # raffaelo
 
+> Semyon, P. (2023). [Web3: writing a small framework for interacting with smart contracts on Python](https://habr.com/ru/articles/710084/).
+
+
+
 It's a core framework for interacting with smart contracts. The purpose of the framework is to implement the logic of the certain smart contract. All contracts inherit the [`iCBC`](https://github.com/e183b796621afbf902067460/raffaelo/blob/master/raffaelo/interfaces/contracts/interface.py) logic.
 
 # Installation
@@ -70,7 +74,7 @@ class UniswapV2PairContract(iCBC):
 
 ```
 
-The code above is implementation of the Uniswap [USDC/WETH](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc) LP Token.
+The code above is implementation of the [Uniswap USDC/WETH LP Token](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc).
 
 Example of contract building:
 ```python
