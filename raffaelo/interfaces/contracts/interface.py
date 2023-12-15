@@ -1,9 +1,9 @@
-from typing import Dict, Any, Optional, Generic, overload, final
 from abc import ABC
+from typing import Any, Dict, Generic, Optional, final, overload
 
 from web3 import Web3
 from web3.eth import Eth
-from web3.exceptions import ValidationError, CannotHandleRequest
+from web3.exceptions import CannotHandleRequest, ValidationError
 
 from raffaelo.typings.providers.typing import ProviderType
 
@@ -23,7 +23,12 @@ class iCBC(ABC):
 
     @contract.setter
     def contract(self, *args, **kwargs) -> None:
-        self._contract = self.builder.build(key='address', value=self._address).build(key='provider', value=self._provider).connect().construct()
+        self._contract = (
+            self.builder.build(key="address", value=self._address)
+            .build(key="provider", value=self._provider)
+            .connect()
+            .construct()
+        )
 
     @property
     def provider(self):
@@ -49,17 +54,16 @@ class iCBC(ABC):
 
         @final
         def build(
-                self,
-                key: Optional[str] = None,
-                value: Optional[str] = None,
-                params: Optional[Dict[str, Any]] = None
+            self,
+            key: Optional[str] = None,
+            value: Optional[str] = None,
+            params: Optional[Dict[str, Any]] = None,
         ) -> "iCBC.Builder":
-
             def validate(k: str, v: Any) -> None:
-                if k == 'address':
+                if k == "address":
                     if not Web3.is_address(value=v):
                         raise ValidationError("Invalid address")
-                elif k == 'provider':
+                elif k == "provider":
                     if not v.provider.is_connected():
                         raise CannotHandleRequest("Provider is down")
 
@@ -74,13 +78,18 @@ class iCBC(ABC):
 
         @final
         def connect(self) -> "iCBC.Builder":
-            if self._options.get('address'):
-                self._options['address'] = Web3.to_checksum_address(value=self._options.get('address'))
+            if self._options.get("address"):
+                self._options["address"] = Web3.to_checksum_address(
+                    value=self._options.get("address"),
+                )
             return self
 
         @final
         def construct(self) -> Eth.contract:
-            return Web3(provider=self._options['provider'].provider).eth.contract(address=self._options['address'], abi=self._abi)
+            return Web3(provider=self._options["provider"].provider).eth.contract(
+                address=self._options["address"],
+                abi=self._abi,
+            )
 
     @property
     def builder(self) -> Builder:
