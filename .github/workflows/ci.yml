@@ -6,8 +6,7 @@ on:
       - master
 
 jobs:
-  build:
-
+  checkout:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +19,36 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip3 install -r requirements-dev.txt
+        run: pip3 install -r requirements-dev.txе
+  
+  isort:
+    needs: checkout
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Run isort
+        run: isort --check .
+
+  ruff:
+    needs: checkout
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run ruff
+        run: ruff check
+
+  black:
+    needs: checkout
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run black
+        run: black --check .
+
+  pytest:
+    needs: checkout
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Run tests
         run: pytest tests/
-
-      - name: Check linting using pre-commit
-        run: pre-commit run --all-files
