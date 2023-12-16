@@ -19,7 +19,7 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip3 install -r requirements-dev.txе
+        run: pip3 install -r requirements-dev.txt
   
   isort:
     needs: checkout
