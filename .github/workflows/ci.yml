@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  checkout:
+  pre-commit:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,35 +20,24 @@ jobs:
 
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
-  
-  isort:
-    needs: checkout
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Run isort
-        run: ls
-
-  ruff:
-    needs: checkout
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run ruff
-        run: ruff check
-
-  black:
-    needs: checkout
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run black
-        run: black --check .
+      - name: Pre-commit run
+        run: pre-commit run --all-files
 
   pytest:
-    needs: checkout
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run tests
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip3 install -r requirements-dev.txt
+
+      - name: Pytest run
         run: pytest tests/
