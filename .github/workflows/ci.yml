@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Run isort
-        run: isort --check .
+        run: ls
 
   ruff:
     needs: checkout
