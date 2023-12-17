@@ -45,5 +45,17 @@ jobs:
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
 
-      - name: Pytest run
+      - name: Install raffaelo-uniswap-v3
+        run: pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_uniswap_v3&subdirectory=_modules/raffaelo-uniswap-v3/" --config-settings editable_mode=strict
+
+      - name: Install raffaelo-quickswap-v3
+        run: pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_quickswap_v3&subdirectory=_modules/raffaelo-quickswap-v3/" --config-settings editable_mode=strict
+
+      - name: Pytest run raffaelo/
         run: pytest tests/
+
+      - name: Pytest run raffaelo-uniswap-v3/
+        run: pytest _modules/raffaelo-uniswap-v3/raffaelo_uniswap_v3_tests/
+
+      - name: Pytest run raffaelo-quickswap-v3/
+        run: pytest _modules/raffaelo-quickswap-v3/raffaelo_quickswap_v3_tests/
