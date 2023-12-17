@@ -8,9 +8,11 @@ def name(contract: ERC20TokenContract) -> str:  # noqa: D103
     yield contract.name()
 
 
+@pytest.mark.unit
 def test__name__must_be_str(name: str):  # noqa: D103
     assert isinstance(name, str)
 
 
+@pytest.mark.unit
 def test__name__must_be_equal_to_usd_coin(name: str):  # noqa: D103
     assert name == "USD Coin"

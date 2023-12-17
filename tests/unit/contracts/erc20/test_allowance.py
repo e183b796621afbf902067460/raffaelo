@@ -8,5 +8,6 @@ def allowance(contract: ERC20TokenContract, mock_address: str) -> int:  # noqa: 
     yield contract.allowance(owner=mock_address, spender=mock_address)
 
 
+@pytest.mark.unit
 def test__allowance__must_be_int(allowance: int):  # noqa: D103
     assert isinstance(allowance, int)
