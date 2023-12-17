@@ -8,7 +8,7 @@ required = Path("requirements.txt").read_text().splitlines()
 
 setup(
     name="raffaelo",
-    version="0.0.2",
+    version="0.0.3",
     author="e183b796621afbf902067460",
     author_email="606d18446a06fe9738fd@gmail.com",
     url="https://github.com/e183b796621afbf902067460/raffaelo",
