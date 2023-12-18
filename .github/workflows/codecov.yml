@@ -1,11 +1,7 @@
-name: CI-pipeline for raffaelo framework
+name: CI-pipeline to coverage raffaelo framework
 
 on:
   push:
-    branches:
-      - master
-      - dev
-  pull_request:
     branches:
       - master
       - dev
@@ -30,7 +26,7 @@ jobs:
       - name: Pre-commit run
         run: pre-commit run --all-files
 
-  pytest:
+  codecov:
     runs-on: ubuntu-latest
 
     steps:
