@@ -1,5 +1,9 @@
 # raffaelo
 
+[![codecov](https://codecov.io/gh/e183b796621afbf902067460/raffaelo/graph/badge.svg?token=KOZU7YNH6H)](https://codecov.io/gh/e183b796621afbf902067460/raffaelo)
+[![license](https://img.shields.io/:license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+[![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 > Semyon, P. (2023). [Web3: writing a small framework for interacting with smart contracts on Python](https://habr.com/ru/articles/710084/).
 
 
