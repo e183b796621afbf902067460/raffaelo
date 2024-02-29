@@ -78,7 +78,7 @@ class UniswapV2PairContract(iCBC):
 
 ```
 
-The code above is implementation of the [UniswapV2 USDC/WETH LP Token](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc).
+The code above is implementation of the [UniswapV2 USDC/WETH LP Token](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc)[^1].
 
 Example of contract building:
 ```python
@@ -95,3 +95,5 @@ And finally to call needed methods just do it:
 t0_address = uniswap.token0()
 t1_address = uniswap.token1()
 ```
+
+[^1]: https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc.
